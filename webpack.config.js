@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -29,6 +30,12 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'style.css',
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {from:'src/assets/audio', to: 'audio'},
+                {from:'src/assets/images', to: 'images'},
+            ],
         }),
     ],
     module: {

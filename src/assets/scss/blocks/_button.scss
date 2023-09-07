@@ -21,16 +21,17 @@
     }
 
     &--icon {
-        padding: rem(5px) rem(10px);
+        padding: rem(5px);
+
+        width: rem(34px);
+        height: rem(34px);
 
         display: flex;
         align-items: center;
-        column-gap: rem(5px);
 
-        font-size: rem($font-size-small);
-        line-height: rem($line-height-small);
+        background-color: transparent;
 
-        border-radius: rem($border-radius-big);
+        border-radius: rem($border-radius-medium);
     }
 
     &--small {
@@ -40,5 +41,10 @@
         line-height: rem($line-height-small);
 
         border-radius: rem($border-radius-big);
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
     }
 }

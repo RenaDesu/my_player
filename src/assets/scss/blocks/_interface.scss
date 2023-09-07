@@ -1,0 +1,84 @@
+.interface {
+    display: flex;
+    align-items: center;
+
+    &__wrapper {
+        padding: rem(20px);
+
+        width: rem(320px);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: rem(10px);
+
+        border: rem(2px) solid $medium-purple;
+        border-radius: rem(24px);
+
+        box-shadow: $box-shadow-double;
+    }
+
+    &__cover {
+        width: rem(100px);
+        height: rem(100px);
+
+        &-img {
+            width: 100%;
+            height: 100%;
+
+            border-radius: rem($border-radius-huge);
+        }
+    }
+
+    &__track-title {
+        height: rem(50px);
+    }
+
+    &__progress-container {
+        width: 100%;
+        height: rem(5px);
+
+        background-color: #ca90ec;
+
+        border-radius: rem(2px);
+
+        cursor: pointer;
+    }
+
+    &__progress-bar {
+        width: 50%;
+        height: rem(5px);
+
+        background-color: $medium-purple;
+
+        border-radius: rem(2px);
+
+        cursor: pointer;
+    }
+
+    &__duration {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-self: flex-start;
+    }
+
+    &__buttons {
+        display: flex;
+        column-gap: rem(10px);
+    }
+
+    &__volume {
+        display: flex;
+
+        &-icon {
+            width: rem(44px);
+            height: rem(44px);
+        }
+
+        &-bar {
+            cursor: pointer;
+        }
+    }
+}

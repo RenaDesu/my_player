@@ -1,0 +1,62 @@
+.player {
+    padding: rem(30px) 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: rem(30px);
+
+    &__tracks-list {
+        @include list;
+
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(10px);
+    }
+
+    &__item {
+        max-width: 100%;
+
+        display: flex;
+        align-items: flex-start;
+        column-gap: rem(10px);
+    }
+
+    &__track-cover {
+        width: rem(50px);
+        height: rem(50px);
+
+        cursor: pointer;
+
+        &:hover {
+            outline: rem(2px) solid $medium-purple;
+        }
+    }
+
+    &__track-wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(5px);
+    }
+
+    &__track-title {
+        margin: 0;
+
+        font-size: rem($font-size-small);
+        line-height: 100%;
+        font-weight: $font-weight-bold;
+    }
+
+    &__track-artist {
+        margin: 0;
+
+        font-size: rem($font-size-small);
+        line-height: 100%;
+    }
+
+
+
+
+    &__visual-effects {
+        grid-column: 1 / -1;
+    }
+}
