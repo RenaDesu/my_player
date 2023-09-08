@@ -68,17 +68,17 @@
         <div class="player__interface interface">
           <div class="interface__wrapper" data-interface>
 
-            <div class="interface__title">Не играет</div>
+            <div class="interface__title" data-state>Не играет</div>
             <div class="interface__cover"><img class="interface__cover-img" data-track-cover src="assets/images/bach.jpg"
                 alt="Обложка альбома."></div>
-            <div class="interface__track-title" data-track-title>Cantante Profane No.205 - 9. Air Pallas</div>
+            <div class="interface__track-title" data-track-title id="1">Cantante Profane No.205 - 9. Air Pallas</div>
             <audio data-track src="assets/audio/Cantante Profane No.205 - 9. Air Pallas.mp3"></audio>
             <div class="interface__progress-container" data-progress-container>
               <div class="interface__progress-bar" data-progress-bar></div>
             </div>
             <div class="interface__duration">
-              <div class="interface__current-time">00:00</div>
-              <div class="interface__track-duration">00:00</div>
+              <div class="interface__current-time" data-current-time>00:00</div>
+              <div class="interface__track-duration" data-duration>00:00</div>
             </div>
             <div class="interface__buttons">
               <button class="button button--icon" type="button"><img class="button__img"
@@ -90,7 +90,7 @@
             </div>
             <div class="interface__volume">
               <img class="interface__volume-icon" src="assets/images/sound-waves.png" alt="Иконка звук">
-              <input class="interface__volume-bar" type="range" value="100" max="100" title="Громкость" id='volume'>
+              <input class="interface__volume-bar" data-volume type="range" step="10" value="100" max="100" title="Громкость" id='volume'>
               <div class="interface__volume-progress"></div>
             </div>
             <div class="interface__visual-effects">

@@ -9,6 +9,10 @@ const trackTitle = document.querySelector('[data-track-title]');
 const trackCover = document.querySelector('[data-track-cover]');
 const icon = document.querySelector('[data-icon]');
 const trackTitles = document.querySelectorAll('[data-title]');
+const trackState = document.querySelector('[data-state]');
+const volume = document.querySelector('[data-volume]');
+const trackCurrentTime = document.querySelector('[data-current-time]');
+const trackDuration = document.querySelector('[data-duration]');
 
 let isPlaying = false;
 
@@ -51,12 +55,14 @@ function selectTrack(title, track, cover, id) {
 function playTrack() {
     isPlaying = true;
     icon.src = 'images/pause.png';
+    trackState.innerText = 'Играет';
     mainTrack.play();
 }
 //Пауза
 function pauseTrack() {
     isPlaying = false;
     icon.src = 'images/play.png';
+    trackState.innerText = 'Не играет';
     mainTrack.pause();
 }
 //Следующий трек
@@ -100,21 +106,63 @@ function prevTrack(target) {
     }
 }
 
-mainTrack.addEventListener('timeupdate', updateProgressBar);
+mainTrack.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', rewindTrack);
 
-function updateProgressBar(e) {
+//Автопереключение трека
+mainTrack.addEventListener('ended', () => {
+    icon.src = 'images/play.png';
+    trackState.innerText = 'Не играет';
+    nextBtn.click();
+});
+
+//Отображение прогресса
+function updateProgress(e) {
     const {
         duration,
         currentTime
     } = e.srcElement;
     const progressPercent = (currentTime / duration) * 100;
     progressBar.style.width = `${progressPercent}%`;
+
+    /*
+    Есть один баг. Пока не знаю, как от него избавиться. Когда переключаешь трек, то
+    на секунду (или даже меньше) на месте, где отображается общая длительность трека,
+    выходит NanNan:NanNan. Видимо, это связано с задержкой в получении длительности
+    трека. Буду рада совету, как от этого избавиться.
+    */
+    trackCurrentTime.innerText = convertTime(currentTime);
+    trackDuration.innerText = convertTime(duration);
 }
 
+//Перемотка трека
 function rewindTrack(e) {
     const width = this.clientWidth;
     const clickX = e.offsetX;
     const duration = mainTrack.duration;
     mainTrack.currentTime = (clickX / width) * duration;
+}
+//Регулировка звука
+volume.addEventListener('input', (e) => {
+    const target = e.target;
+    if (target.value == 1) {
+        mainTrack.volume = 1.0;
+    }
+    if (target.value == 0) {
+        mainTrack.volume = 0.0;
+    }
+    const volume = parseInt(target.value) / 100;
+    mainTrack.volume = volume;
+});
+//Конвертация времени
+function convertTime(time) {
+    let mins = Math.floor(time / 60);
+    if (mins < 10) {
+        mins = '0' + String(mins);
+    }
+    let secs = Math.floor(time % 60);
+    if (secs < 10) {
+        secs = '0' + String(secs);
+    }
+    return mins + ':' + secs;
 }
