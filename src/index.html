@@ -22,55 +22,15 @@
     <div class="container">
 
       <section class="player">
-        <ul class="player__tracks-list">
+        <ul class="player__tracks-list" data-tracks-list>
           <li>Медиатека</li>
-          <li class="player__item">
-            <img class="player__track-cover" data-track-item src="assets/images/bach.jpg" alt="Обложка альбома.">
-            <div class="player__track-wrapper">
-              <h3 class="player__track-title" data-title="1">Cantante Profane No.205 - 9. Air Pallas</h3>
-              <p class="player__track-artist">Johann Sebastian Bach</p>
-            </div>
-            <audio data-track-src src="assets/audio/Cantante Profane No.205 - 9. Air Pallas.mp3"></audio>
-          </li>
-          <li class="player__item">
-            <img class="player__track-cover" data-track-item src="assets/images/bach.jpg" alt="Обложка альбома.">
-            <div class="player__track-wrapper">
-              <h3 class="player__track-title" data-title="2">The Art of Fugue, BWV. 1080 - Contrapunctus 13 a 3 rectus Spiegelfuge</h3>
-              <p class="player__track-artist">Johann Sebastian Bach</p>
-            </div>
-            <audio data-track-src src="assets/audio/The Art of Fugue, BWV. 1080 - Contrapunctus 13 a 3 rectus Spiegelfuge.mp3"></audio>
-          </li>
-          <li class="player__item">
-            <img class="player__track-cover" data-track-item src="assets/images/bach.jpg" alt="Обложка альбома.">
-            <div class="player__track-wrapper">
-              <h3 class="player__track-title" data-title="3">Cantata BWV 201 - 7. Air Pan a</h3>
-              <p class="player__track-artist">Johann Sebastian Bach</p>
-            </div>
-            <audio data-track-src src="assets/audio/Cantata BWV 201 - 7. Air Pan a.mp3"></audio>
-          </li>
-          <li class="player__item">
-            <img class="player__track-cover" data-track-item src="assets/images/bach.jpg" alt="Обложка альбома.">
-            <div class="player__track-wrapper">
-              <h3 class="player__track-title" data-title="4">Cantata BWV 201 - 11. Air Midas a</h3>
-              <p class="player__track-artist">Johann Sebastian Bach</p>
-            </div>
-            <audio data-track-src src="assets/audio/Cantata BWV 201 - 11. Air Midas a.mp3"></audio>
-          </li>
-          <li class="player__item">
-            <img class="player__track-cover" data-track-item src="assets/images/bach.jpg" alt="Обложка альбома.">
-            <div class="player__track-wrapper">
-              <h3 class="player__track-title" data-title="5">Cantata BWV 201 - 14. Recitatif Momus Choeur b</h3>
-              <p class="player__track-artist">Johann Sebastian Bach</p>
-            </div>
-            <audio data-track-src src="assets/audio/Cantata BWV 201 - 14. Recitatif Momus Choeur b.mp3"></audio>
-          </li>
         </ul>
         <div class="player__interface interface">
           <div class="interface__wrapper" data-interface>
 
             <div class="interface__title" data-state>Не играет</div>
-            <div class="interface__cover"><img class="interface__cover-img" data-track-cover src="assets/images/bach.jpg"
-                alt="Обложка альбома."></div>
+            <div class="interface__cover"><img class="interface__cover-img" data-track-cover
+                src="assets/images/bach.jpg" alt="Обложка альбома."></div>
             <div class="interface__track-title" data-track-title id="1">Cantante Profane No.205 - 9. Air Pallas</div>
             <audio data-track src="assets/audio/Cantante Profane No.205 - 9. Air Pallas.mp3"></audio>
             <div class="interface__progress-container" data-progress-container>
@@ -83,14 +43,15 @@
             <div class="interface__buttons">
               <button class="button button--icon" type="button"><img class="button__img"
                   src="assets/images/prev-button.png" data-prev alt="Предыдущий трек"></button>
-              <button class="button button--icon" data-play type="button"><img data-icon class="button__img" src="assets/images/play.png"
-                  alt="Play"></button>
+              <button class="button button--icon" data-play type="button"><img data-icon class="button__img"
+                  src="assets/images/play.png" alt="Play"></button>
               <button class="button button--icon" type="button"><img class="button__img"
                   src="assets/images/next-button.png" data-next alt="Следующий трек"></button>
             </div>
             <div class="interface__volume">
               <img class="interface__volume-icon" src="assets/images/sound-waves.png" alt="Иконка звук">
-              <input class="interface__volume-bar" data-volume type="range" step="10" value="100" max="100" title="Громкость" id='volume'>
+              <input class="interface__volume-bar" data-volume type="range" step="10" value="100" max="100"
+                title="Громкость" id='volume'>
               <div class="interface__volume-progress"></div>
             </div>
             <div class="interface__visual-effects">
@@ -132,6 +93,17 @@
       </div>
     </div>
   </footer>
+
+  <template id="track-template">
+    <li class="player__item">
+      <img class="player__track-cover" data-track-item="1" src="assets/images/bach.jpg" alt="Обложка альбома.">
+      <div class="player__track-wrapper">
+        <h3 class="player__track-title" data-title="1"></h3>
+        <p class="player__track-artist"></p>
+      </div>
+      <audio data-track-src src="assets/audio/Cantante Profane No.205 - 9. Air Pallas.mp3"></audio>
+    </li>
+  </template>
 
   <script src="js/main.js"></script>
 </body>

@@ -42,12 +42,12 @@
     }
 
     &--small {
-        padding: rem(3px) rem(7px);
+        padding: rem(2px) rem(5px);
 
-        font-size: rem($font-size-small);
-        line-height: rem($line-height-small);
+        font-size: rem($font-size-tiny);
+        line-height: rem($line-height-tiny);
 
-        border-radius: rem($border-radius-big);
+        border-radius: rem(4px);
     }
 
     &__img {

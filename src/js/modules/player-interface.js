@@ -8,7 +8,6 @@ const progressBar = document.querySelector('[data-progress-bar]');
 const trackTitle = document.querySelector('[data-track-title]');
 const trackCover = document.querySelector('[data-track-cover]');
 const icon = document.querySelector('[data-icon]');
-const trackTitles = document.querySelectorAll('[data-title]');
 const trackState = document.querySelector('[data-state]');
 const volume = document.querySelector('[data-volume]');
 const trackCurrentTime = document.querySelector('[data-current-time]');
@@ -71,18 +70,12 @@ function nextTrack(target) {
         const parent = target.closest('.interface__wrapper');
         const titleEl = parent.querySelector('[data-track-title]');
         const title = titleEl.id;
-
-        trackTitles.forEach((el) => {
-            if (el.dataset.title == parseInt(title) + 1) {
-                const parent = el.closest('.player__item');
-                const title = el.innerText;
-                const track = parent.querySelector('[data-track-src]');
-                const cover = parent.querySelector('.player__track-cover');
-                const id = el.dataset.title;
-                selectTrack(title, track, cover, id);
-                playTrack();
-            }
-        });
+        
+        if (title == 5) {
+            document.querySelector(`[data-track-item="1"]`).click();
+        } else {
+            document.querySelector(`[data-track-item="${parseInt(title) + 1}"]`).click();
+        }
     }
 }
 //Предыдущий трек
@@ -91,30 +84,18 @@ function prevTrack(target) {
         const parent = target.closest('.interface__wrapper');
         const titleEl = parent.querySelector('[data-track-title]');
         const title = titleEl.id;
-
-        trackTitles.forEach((el) => {
-            if (el.dataset.title == parseInt(title) - 1) {
-                const parent = el.closest('.player__item');
-                const title = el.innerText;
-                const track = parent.querySelector('[data-track-src]');
-                const cover = parent.querySelector('.player__track-cover');
-                const id = el.dataset.title;
-                selectTrack(title, track, cover, id);
-                playTrack();
-            }
-        });
+ 
+        if (title == 1) {
+            document.querySelector(`[data-track-item="5"]`).click();
+        } else {
+            document.querySelector(`[data-track-item="${parseInt(title) - 1}"]`).click();
+        }
     }
 }
 
+//Перемотка трека и отображение прогресса
 mainTrack.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', rewindTrack);
-
-//Автопереключение трека
-mainTrack.addEventListener('ended', () => {
-    icon.src = 'images/play.png';
-    trackState.innerText = 'Не играет';
-    nextBtn.click();
-});
 
 //Отображение прогресса
 function updateProgress(e) {
@@ -134,7 +115,6 @@ function updateProgress(e) {
     trackCurrentTime.innerText = convertTime(currentTime);
     trackDuration.innerText = convertTime(duration);
 }
-
 //Перемотка трека
 function rewindTrack(e) {
     const width = this.clientWidth;
@@ -142,6 +122,14 @@ function rewindTrack(e) {
     const duration = mainTrack.duration;
     mainTrack.currentTime = (clickX / width) * duration;
 }
+//Автопереключение трека
+mainTrack.addEventListener('ended', () => {
+    if (trackTitle.id !== 4) {
+        icon.src = 'images/play.png';
+        trackState.innerText = 'Не играет';
+        nextBtn.click();
+    }
+});
 //Регулировка звука
 volume.addEventListener('input', (e) => {
     const target = e.target;
