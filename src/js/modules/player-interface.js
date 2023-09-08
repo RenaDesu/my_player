@@ -1,6 +1,4 @@
-const playerInterface = document.querySelector('[data-interface]');
 const playBtn = document.querySelector('[data-play]');
-const prevBtn = document.querySelector('[data-prev]');
 const nextBtn = document.querySelector('[data-next]');
 const mainTrack = document.querySelector('[data-track]');
 const progressContainer = document.querySelector('[data-progress-container]');
@@ -70,7 +68,7 @@ function nextTrack(target) {
         const parent = target.closest('.interface__wrapper');
         const titleEl = parent.querySelector('[data-track-title]');
         const title = titleEl.id;
-        
+
         if (title == 5) {
             document.querySelector(`[data-track-item="1"]`).click();
         } else {
@@ -84,7 +82,7 @@ function prevTrack(target) {
         const parent = target.closest('.interface__wrapper');
         const titleEl = parent.querySelector('[data-track-title]');
         const title = titleEl.id;
- 
+
         if (title == 1) {
             document.querySelector(`[data-track-item="5"]`).click();
         } else {
