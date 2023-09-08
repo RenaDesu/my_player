@@ -15,10 +15,20 @@ const trackDuration = document.querySelector('[data-duration]');
 
 let isPlaying = false;
 
+// Визуализация звуковых волн трека
+const wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: '#ca90ec',
+    progressColor: '#ad43eb',
+    height: 50,
+    interact: false,
+    media: mainTrack,
+});
+
 //Воспроизведение/пауза
 playBtn.addEventListener('click', () => {
     if (isPlaying) {
-        pauseTrack()
+        pauseTrack();
     } else {
         playTrack();
     }
@@ -33,7 +43,16 @@ window.addEventListener('click', (e) => {
         const id = titleEl.dataset.title;
         const title = titleEl.innerText;
         const track = parent.querySelector('[data-track-src]');
+ 
         selectTrack(title, track, cover, id);
+
+        /*
+        Песня обновляется, но волны не перерисовываются. Не понимаю, как
+        можно решить эту проблему. В документации не нашла метод, который 
+        перерисует волны (документация неполная дана, нет методов в перечне). 
+        */
+        wavesurfer.media = mainTrack;
+      
         playTrack();
     }
 });
@@ -154,13 +173,3 @@ function convertTime(time) {
     }
     return mins + ':' + secs;
 }
-
-// Визуализация звуковых волн трека
-const wavesurfer = WaveSurfer.create({
-    container: '#waveform',
-    waveColor: '#ca90ec',
-    progressColor: '#ad43eb',
-    height: 50,
-    interact: false,
-    media: mainTrack,
-});
