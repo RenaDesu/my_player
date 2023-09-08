@@ -1,3 +1,5 @@
+import WaveSurfer from 'wavesurfer.js';
+
 const playBtn = document.querySelector('[data-play]');
 const nextBtn = document.querySelector('[data-next]');
 const mainTrack = document.querySelector('[data-track]');
@@ -152,3 +154,13 @@ function convertTime(time) {
     }
     return mins + ':' + secs;
 }
+
+// Визуализация звуковых волн трека
+const wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: '#ca90ec',
+    progressColor: '#ad43eb',
+    height: 50,
+    interact: false,
+    media: mainTrack,
+});
