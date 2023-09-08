@@ -30,8 +30,15 @@
         align-items: center;
 
         background-color: transparent;
-
         border-radius: rem($border-radius-medium);
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: transparent;
+            outline: rem(2px) solid $medium-purple;
+        }
+
     }
 
     &--small {

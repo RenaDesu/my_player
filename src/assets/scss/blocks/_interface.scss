@@ -46,7 +46,7 @@
     }
 
     &__progress-bar {
-        width: 50%;
+        width: 0;
         height: rem(5px);
 
         background-color: $medium-purple;
@@ -70,7 +70,10 @@
     }
 
     &__volume {
+        position: relative;
+
         display: flex;
+        align-items: center;
 
         &-icon {
             width: rem(44px);
@@ -78,7 +81,48 @@
         }
 
         &-bar {
+            appearance: none;
+            -webkit-appearance: none;
+
+            // margin: rem(10px) 0 rem(5px) 0;
+
+            width: 100%;
+            height: rem(3px);
+
+            background-color: #ca90ec;
+            outline: none;
+            border-radius: rem(2px);
+
+            transition: opacity .2s;
+            -webkit-transition: .2s;
+
             cursor: pointer;
+
+            &::-webkit-slider-thumb {
+                appearance: none;
+
+                width: rem(11px);
+                height: rem(11px);
+
+                border-radius: 100%;
+                background: $medium-purple;
+            }
+
+            &::after {
+                content: '';
+
+                position: absolute;
+                top: 46%;
+
+                width: rem(128px);
+                height: rem(3px);
+                background-color: $medium-purple;
+                border-radius: rem(2px);
+
+                z-index: 1;
+            }
         }
+
+        // &-progress {}
     }
 }
